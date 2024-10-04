@@ -8,11 +8,18 @@
 import SwiftUI
 
 public struct CustomButton: View {
-    
+
     let text: String
     let isPrimary: Bool
     let color: Color
     let action: () -> ()
+    
+    public init(text: String, isPrimary: Bool, color: Color, action: @escaping () -> Void) {
+        self.text = text
+        self.isPrimary = isPrimary
+        self.color = color
+        self.action = action
+    }
     
     public var body: some View {
         Button(action: {
