@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct CustomButton: View {
+public struct CustomButton: View {
+    
     let text: String
     let isPrimary: Bool
     let color: Color
     let action: () -> ()
     
-    var body: some View {
+    public var body: some View {
         Button(action: {
             action()
         }) {
