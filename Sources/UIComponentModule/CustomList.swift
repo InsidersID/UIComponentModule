@@ -12,6 +12,14 @@ public struct CustomList: View {
     public var checklistStatus: ChecklistStatus = .undone
     public var isAddItem: Bool = false
     
+    public init(height: CGFloat, text: String, isChecklist: Bool, checklistStatus: ChecklistStatus, isAddItem: Bool) {
+        self.height = height
+        self.text = text
+        self.isChecklist = isChecklist
+        self.checklistStatus = checklistStatus
+        self.isAddItem = isAddItem
+    }
+    
     public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
