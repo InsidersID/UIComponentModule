@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  UIComponentModule
-//
-//  Created by Balya Elfata on 07/10/24.
-//
-
 import SwiftUI
 
 struct OnboardingPageIndicator: View {
