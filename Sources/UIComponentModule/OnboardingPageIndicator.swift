@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct OnboardingPageIndicator: View {
-    var pageIndex: Int
+    public var pageIndex: Int
     
     public var body: some View {
         HStack {

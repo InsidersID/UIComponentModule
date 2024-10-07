@@ -1,16 +1,16 @@
 import SwiftUI
 
-enum ChecklistStatus {
+public enum ChecklistStatus {
     case done
     case undone
 }
 
 public struct CustomList: View {
-    var height: CGFloat = 46
-    var text: String
-    var isChecklist: Bool = false
-    var checklistStatus: ChecklistStatus = .undone
-    var isAddItem: Bool = false
+    public var height: CGFloat = 46
+    public var text: String
+    public var isChecklist: Bool = false
+    public var checklistStatus: ChecklistStatus = .undone
+    public var isAddItem: Bool = false
     
     public var body: some View {
         ZStack {
