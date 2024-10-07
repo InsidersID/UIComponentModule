@@ -5,14 +5,14 @@ enum ChecklistStatus {
     case undone
 }
 
-struct CustomList: View {
+public struct CustomList: View {
     var height: CGFloat = 46
     var text: String
     var isChecklist: Bool = false
     var checklistStatus: ChecklistStatus = .undone
     var isAddItem: Bool = false
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .frame(width: .infinity, height: isAddItem ? 48 : height)

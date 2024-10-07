@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct OnboardingPageIndicator: View {
+public struct OnboardingPageIndicator: View {
     var pageIndex: Int
     
-    var body: some View {
+    public var body: some View {
         HStack {
             Image(systemName: pageIndex == 1 ? "circle.fill" : "circle")
             Image(systemName: pageIndex == 2 ? "circle.fill" : "circle")
