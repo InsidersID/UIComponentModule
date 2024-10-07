@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct OnboardingPageIndicator: View {
+    var pageIndex: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: pageIndex == 1 ? "circle.fill" : "circle")
+            Image(systemName: pageIndex == 2 ? "circle.fill" : "circle")
+            Image(systemName: pageIndex == 3 ? "circle.fill" : "circle")
+            Image(systemName: pageIndex == 4 ? "circle.fill" : "circle")
+        }
+        .fontWeight(.black)
+        .foregroundStyle(.red)
     }
 }
 
 #Preview {
-    OnboardingPageIndicator()
+    OnboardingPageIndicator(pageIndex: 1)
 }
