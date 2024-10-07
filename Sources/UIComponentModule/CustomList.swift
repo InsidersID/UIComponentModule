@@ -10,7 +10,7 @@ struct CustomList: View {
     var text: String
     var isChecklist: Bool = false
     var checklistStatus: ChecklistStatus = .undone
-    var isAddItem: Bool = true
+    var isAddItem: Bool = false
     
     var body: some View {
         ZStack {
