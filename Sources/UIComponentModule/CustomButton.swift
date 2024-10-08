@@ -10,15 +10,15 @@ import SwiftUI
 public struct CustomButton: View {
 
     let text: String
-    let isPrimary: Bool
     let color: Color
+    let cornerRadius: CGFloat
     let action: () -> ()
     
-    public init(text: String, isPrimary: Bool, color: Color, action: @escaping () -> Void) {
+    public init(text: String, color: Color, cornerRadius: CGFloat, action: @escaping () -> Void) {
         self.text = text
-        self.isPrimary = isPrimary
         self.color = color
         self.action = action
+        self.cornerRadius = cornerRadius
     }
     
     public var body: some View {
@@ -33,13 +33,13 @@ public struct CustomButton: View {
         .padding()
         .background(color)
         .foregroundColor(.white)
-        .cornerRadius(14)
+        .cornerRadius(cornerRadius)
         .padding()
     }
 }
 
 #Preview {
-    CustomButton(text: "Ini button", isPrimary: true, color: .red) {
+    CustomButton(text: "Ini button", color: .red, cornerRadius: 14) {
         print("tes")
     }
 }
