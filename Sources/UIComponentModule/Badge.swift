@@ -7,24 +7,34 @@
 
 import SwiftUI
 
-public struct Tag: View {
-    let padding: CGFloat
+public struct Badge: View {
+    let paddingHorizontal: CGFloat
+    let paddingVertical: CGFloat
     let text: String
+    let backgroundColor: Color
+    let color: Color?
     let height: CGFloat = 20
-    let pVertical:CGFloat = 8
-    var body: some View {
-        Text(text)
-            .fixedSize()
-            .padding(.horizontal, padding)
-            .padding(.vertical, pVertical)
-            .background(Color.orange.opacity(0.2))
-            .foregroundColor(Color.orange)
-            .cornerRadius( (height + pVertical * 2) / 2)
+    
+    public init(paddingHorizontal: CGFloat, paddingVertical: CGFloat, text: String, backgroundColor: Color, color: Color) {
+        self.paddingHorizontal = paddingHorizontal
+        self.paddingVertical = paddingVertical
+        self.text = text
+        self.backgroundColor = backgroundColor
+        self.color = color
+    }
+    
+    public var body: some View {
+        Text(text.prefix(1).uppercased() + text.dropFirst())
+            .font(.caption)
+            .padding(.horizontal, paddingHorizontal)
+            .padding(.vertical, paddingVertical - 4)
+            .background(backgroundColor.opacity(0.5))
+            .foregroundColor(color)
+            .cornerRadius( (height + paddingVertical * 2) / 2)
             .frame(height: height)
     }
 }
 
-
 #Preview {
-    SwiftUIView_2()
+    Badge(paddingHorizontal: 8, paddingVertical: 8, text: "belum selesai", backgroundColor: .pink, color: .white )
 }
