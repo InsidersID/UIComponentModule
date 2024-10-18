@@ -43,6 +43,7 @@ public struct CustomButton: View {
         .background(color)
         .foregroundColor(.white)
         .cornerRadius(cornerRadius)
+        .padding(.horizontal)
     }
 }
 
