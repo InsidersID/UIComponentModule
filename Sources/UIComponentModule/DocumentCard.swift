@@ -17,17 +17,13 @@ public struct DocumentCard: View {
                 .frame(width: width, height: height)
                 .foregroundStyle(.white)
             
-            VStack(alignment: .leading) {
+            VStack {
                 Text(document)
                     .padding(.bottom)
                 
                 Text(status)
                     .foregroundStyle(.red)
                     .padding(.bottom)
-                
-                Button("Upload") {
-                    //
-                }
             }
         }
         .shadow(color: .black.opacity(0.1), radius: 10)
