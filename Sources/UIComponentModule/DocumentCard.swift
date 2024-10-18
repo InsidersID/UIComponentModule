@@ -28,7 +28,6 @@ public struct DocumentCard: View {
                 Button("Upload") {
                     //
                 }
-                .padding(.bottom)
             }
         }
     }
