@@ -20,6 +20,7 @@ public struct ProfileCard: View {
             RoundedRectangle(cornerRadius: 24)
                 .frame(width: width, height: height)
                 .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.1), radius: 10)
             VStack {
                 Image(systemName: "photo")
                     .resizable()

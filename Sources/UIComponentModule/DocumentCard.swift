@@ -30,6 +30,7 @@ public struct DocumentCard: View {
                 }
             }
         }
+        .shadow(color: .black.opacity(0.1), radius: 10)
     }
 }
 
