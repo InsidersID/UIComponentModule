@@ -10,6 +10,7 @@ import SwiftUI
 public struct CustomButton: View {
 
     let text: String
+    var textColor: Color = .white
     let color: Color
     let font: CGFloat
     let cornerRadius: CGFloat
@@ -17,8 +18,9 @@ public struct CustomButton: View {
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String, color: Color, font: CGFloat, cornerRadius: CGFloat, paddingHorizontal: CGFloat, paddingVertical: CGFloat, action: @escaping () -> Void) {
+    public init(text: String,textColor: Color = .white, color: Color, font: CGFloat, cornerRadius: CGFloat, paddingHorizontal: CGFloat, paddingVertical: CGFloat, action: @escaping () -> Void) {
         self.text = text
+        self.textColor = textColor
         self.color = color
         self.font = font
         self.action = action
@@ -41,7 +43,6 @@ public struct CustomButton: View {
         .background(color)
         .foregroundColor(.white)
         .cornerRadius(cornerRadius)
-        .padding()
     }
 }
 
