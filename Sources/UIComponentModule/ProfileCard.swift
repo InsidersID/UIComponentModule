@@ -5,14 +5,12 @@ public struct ProfileCard: View {
     public var height: CGFloat = 224
     public var photoWidth: CGFloat = 146.5
     public var photoHeight: CGFloat = 140
-    public var name: String = "Iqbal Setiawan"
+    public var name: String
+    public var isAddProfile: Bool
     
-    public init(width: CGFloat, height: CGFloat, photoWidth: CGFloat, photoHeight: CGFloat, name: String) {
-        self.width = width
-        self.height = height
-        self.photoWidth = photoWidth
-        self.photoHeight = photoHeight
+    public init(name: String, isAddProfile: Bool) {
         self.name = name
+        self.isAddProfile = isAddProfile
     }
     
     public var body: some View {
@@ -22,9 +20,22 @@ public struct ProfileCard: View {
                 .foregroundStyle(.white)
                 .shadow(color: .black.opacity(0.1), radius: 10)
             VStack {
-                Image(systemName: "photo")
-                    .resizable()
-                    .frame(width: photoWidth, height: photoHeight)
+                if isAddProfile {
+                    ZStack {
+                        Color.blue.opacity(0.3)
+                            .frame(width: photoWidth, height: photoHeight)
+                            .cornerRadius(24)
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 68.5, height: 68.5)
+                            .foregroundStyle(.white)
+                    }
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: photoWidth, height: photoHeight)
+                        .cornerRadius(24)
+                }
                 
                 Spacer()
                 
@@ -39,6 +50,8 @@ public struct ProfileCard: View {
                     Image(systemName: "checkmark")
                         .foregroundStyle(.green)
                 }
+                
+                Spacer()
             }
             .padding()
         }
@@ -47,6 +60,6 @@ public struct ProfileCard: View {
 }
 
 #Preview {
-    ProfileCard(width: 170.5, height: 224, photoWidth: 146.5, photoHeight: 140, name: "Iqbal Setiawan")
+    ProfileCard(name: "Iqbal", isAddProfile: false)
         .background(Color.gray.ignoresSafeArea())
 }
