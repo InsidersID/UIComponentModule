@@ -47,8 +47,10 @@ public struct ProfileCard: View {
                     
                     Spacer()
                     
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(.green)
+                    if !isAddProfile {
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.green)
+                    }
                 }
                 
                 Spacer()
