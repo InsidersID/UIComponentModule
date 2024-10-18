@@ -10,7 +10,7 @@ import SwiftUI
 public struct CustomButton: View {
 
     let text: String
-    var textColor: Color
+    let textColor: Color
     let color: Color
     let font: CGFloat
     let cornerRadius: CGFloat
