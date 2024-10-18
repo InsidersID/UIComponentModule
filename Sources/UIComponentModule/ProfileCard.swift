@@ -1,11 +1,19 @@
 import SwiftUI
 
 public struct ProfileCard: View {
-    var width: CGFloat = 170.5
-    var height: CGFloat = 224
-    var photoWidth: CGFloat = 146.5
-    var photoHeight: CGFloat = 140
-    var name: String = "Iqbal Setiawan"
+    public var width: CGFloat = 170.5
+    public var height: CGFloat = 224
+    public var photoWidth: CGFloat = 146.5
+    public var photoHeight: CGFloat = 140
+    public var name: String = "Iqbal Setiawan"
+    
+    public init(width: CGFloat, height: CGFloat, photoWidth: CGFloat, photoHeight: CGFloat, name: String) {
+        self.width = width
+        self.height = height
+        self.photoWidth = photoWidth
+        self.photoHeight = photoHeight
+        self.name = name
+    }
     
     public var body: some View {
         ZStack {
@@ -38,6 +46,6 @@ public struct ProfileCard: View {
 }
 
 #Preview {
-    ProfileCard()
+    ProfileCard(width: 170.5, height: 224, photoWidth: 146.5, photoHeight: 140, name: "Iqbal Setiawan")
         .background(Color.gray.ignoresSafeArea())
 }
