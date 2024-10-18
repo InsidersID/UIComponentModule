@@ -43,6 +43,7 @@ public struct ProfileCard: View {
                     Text(name)
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundStyle(.primary)
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
