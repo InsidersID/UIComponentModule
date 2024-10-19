@@ -46,11 +46,6 @@ public struct ProfileCard: View {
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
-                    
-                    if !isAddProfile {
-                        Image(systemName: "checkmark")
-                            .foregroundStyle(.green)
-                    }
                 }
                 
                 Spacer()
