@@ -19,7 +19,9 @@ public struct DocumentCard: View {
             
             VStack {
                 Text(document)
-                    .padding(.bottom)
+                    .font(.system(.title2, design: .serif, weight: .bold))
+                
+                Spacer()
                 
                 Text(status)
                     .foregroundStyle(.red)
