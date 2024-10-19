@@ -15,7 +15,7 @@ public struct OnboardingPageIndicator: View {
             Image(systemName: pageIndex == 4 ? "circle.fill" : "circle")
         }
         .fontWeight(.black)
-        .foregroundStyle(.red)
+        .foregroundStyle(.blue)
     }
 }
 
