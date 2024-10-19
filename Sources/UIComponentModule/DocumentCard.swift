@@ -12,12 +12,12 @@ public struct DocumentCard: View {
     }
     
     public var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 24)
                 .frame(width: width, height: height)
                 .foregroundStyle(.white)
             
-            VStack {
+            VStack(alignment: .leading) {
                 Text(document)
                     .font(.system(.title2, design: .serif, weight: .bold))
                 
