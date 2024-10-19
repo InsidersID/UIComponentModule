@@ -25,14 +25,15 @@ public struct DocumentCard: View {
                 
                 Text(status)
                     .foregroundStyle(.red)
-                    .padding(.bottom)
             }
+            .padding()
+            .frame(width: width, height: height)
         }
         .shadow(color: .black.opacity(0.1), radius: 10)
     }
 }
 
 #Preview {
-    DocumentCard(document: "KTP", status: "Belum Selesai")
+    DocumentCard(document: "KTP", status: "Belum ada")
         .background(.gray)
 }
