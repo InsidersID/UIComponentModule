@@ -20,6 +20,7 @@ public struct DocumentCard: View {
             VStack(alignment: .leading) {
                 Text(document)
                     .font(.system(.title2, design: .serif, weight: .bold))
+                    .foregroundStyle(.black)
                 
                 Spacer()
                 
