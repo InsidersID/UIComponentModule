@@ -2,11 +2,12 @@ import SwiftUI
 
 public struct DocumentCard: View {
     public var width: CGFloat = .infinity
-    public var height: CGFloat = 142
+    public var height: CGFloat
     public var document: String
     public var status: String
     
-    public init(document: String, status: String) {
+    public init(height: CGFloat = 142, document: String, status: String) {
+        self.height = height
         self.document = document
         self.status = status
     }
