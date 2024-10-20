@@ -10,6 +10,8 @@ import SwiftUI
 public struct NotificationCard: View {
     @State public var deleteNotification: Bool = false
     
+    public init() {}
+    
     public var body: some View {
         GeometryReader { proxy in
             if deleteNotification {EmptyView()} else {
