@@ -8,9 +8,8 @@ public enum ChecklistStatus {
 public struct CustomList: View {
     public var height: CGFloat = 46
     public var text: String
-    public var isChecklist: Bool = false
-    public var checklistStatus: ChecklistStatus = .undone
-    public var isAddItem: Bool = false
+    public var isChecklist: Bool = true
+    public var checklistStatus: ChecklistStatus = .done
     
     public init(text: String) {
         self.text = text
@@ -18,18 +17,12 @@ public struct CustomList: View {
     
     public var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
-                .frame(width: .infinity, height: isAddItem ? 48 : height)
+            RoundedRectangle(cornerRadius: 24)
+                .frame(width: .infinity, height:height)
                 .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 0)
+                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 0)
             
             HStack {
-                if isAddItem {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundStyle(.blue)
-                        .font(.title)
-                }
-                
                 Text(text)
                     .fontWeight(.semibold)
                 
