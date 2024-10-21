@@ -27,6 +27,7 @@ public struct NotificationCard: View {
                         
                         VStack(alignment: .leading) {
                             Text("Entry berhasil dibuat!")
+                                .foregroundStyle(colorScheme == .dark ? Color.black : .black)
                             Text("Pengajuan bisa dilihat di tab Visaku")
                                 .foregroundStyle(colorScheme == .dark ? Color.black : .secondary)
                                 .font(.subheadline)
