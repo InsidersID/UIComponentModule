@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct NotificationCard: View {
+    @Environment(\.colorScheme) var colorScheme
     @State public var deleteNotification: Bool = false
     
     public init() {}
@@ -27,7 +28,7 @@ public struct NotificationCard: View {
                         VStack(alignment: .leading) {
                             Text("Entry berhasil dibuat!")
                             Text("Pengajuan bisa dilihat di tab Visaku")
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(colorScheme == .dark ? Color.white : .secondary)
                                 .font(.subheadline)
                         }
                         
