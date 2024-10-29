@@ -19,7 +19,7 @@ public struct CustomButton: View {
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String,textColor: Color = .white, color: Color, buttonHeight: CGFloat = 40, font: CGFloat = 12, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
+    public init(text: String,textColor: Color = .white, color: Color, buttonHeight: CGFloat = 50, font: CGFloat = 17, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
         self.text = text
         self.textColor = textColor
         self.color = color
@@ -37,8 +37,8 @@ public struct CustomButton: View {
         }) {
             Text(text.prefix(1).capitalized + text.dropFirst())
                 .font(.system(size: font))
-                .fontWeight(.bold)
-                .frame(maxWidth: .infinity)
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity, maxHeight: buttonHeight)
         }
         .padding(.horizontal, paddingHorizontal)
         .padding(.vertical, paddingVertical)
@@ -50,7 +50,7 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: "ini button", color: .red, font: 12) {
+    CustomButton(text: "ini button", color: .red) {
         print("tes")
     }
 }
