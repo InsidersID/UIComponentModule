@@ -44,7 +44,7 @@ public struct VisaApplicationCard: View {
                         HStack {
                             Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
                                 .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
-                            Text("\(Date.now.formatted(.dateTime.day().month(.abbreviated))), \(Date.now.formatted(.dateTime.year()))")
+                            Text("\(Date.now.formatted(date: .numeric, time: .omitted))")
                                 .font(.subheadline)
                                 .foregroundStyle(.gray)
                         }
@@ -58,19 +58,26 @@ public struct VisaApplicationCard: View {
                         
                     }, label: {
                         Text("Lanjutkan")
-                            .padding(.vertical, 12)
+                            .padding(.top, 4)
                             .font(.system(size: 16))
                     })
                 }
             }
-            
+            .padding(.vertical, 12)
         }
     }
     
 }
 
 #Preview {
-    VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink) {
-        print("Card clicked")
+    ForEach(1..<3) { item in
+        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink) {
+            print("Card clicked")
+        }
+    }
+    ForEach(0..<2) { item in
+        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 100, visaProgressColor: .pink) {
+            print("Card clicked")
+        }
     }
 }
