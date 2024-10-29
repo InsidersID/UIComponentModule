@@ -12,16 +12,18 @@ public struct CustomButton: View {
     let text: String
     let textColor: Color
     let color: Color
+    let buttonHeight: CGFloat
     let font: CGFloat
     let cornerRadius: CGFloat
     let paddingHorizontal: CGFloat
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String,textColor: Color = .white, color: Color, font: CGFloat, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat, paddingVertical: CGFloat, action: @escaping () -> Void) {
+    public init(text: String,textColor: Color = .white, color: Color, buttonHeight: CGFloat = 40, font: CGFloat = 12, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
         self.text = text
         self.textColor = textColor
         self.color = color
+        self.buttonHeight = buttonHeight
         self.font = font
         self.action = action
         self.cornerRadius = cornerRadius
@@ -48,7 +50,7 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: "ini button", color: .red, font: 12, cornerRadius: 14, paddingHorizontal: 4, paddingVertical: 8) {
+    CustomButton(text: "ini button", color: .red, font: 12) {
         print("tes")
     }
 }
