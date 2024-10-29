@@ -22,13 +22,16 @@ public struct CardContainer<Content: View>: View {
     
     public var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.white)
-                .shadow(color: shadowColor, radius: CGFloat(shadowRadius), x: 0, y: 0)
             content()
         }
-        .padding()
         .fixedSize(horizontal: false, vertical: false)
+        .background(.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(.gray, lineWidth: 1)
+        )
+        .padding()
     }
 }
 #Preview {
