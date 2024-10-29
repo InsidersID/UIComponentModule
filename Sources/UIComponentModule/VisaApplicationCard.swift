@@ -28,25 +28,42 @@ public struct VisaApplicationCard: View {
     
     
     public var body: some View {
-        CardContainer(cornerRadius: 25) {
-            HStack(spacing: 20) {
-                VStack {
-                    Image(systemName: "pengajuanvisa-\(country)")
+        CardContainer(cornerRadius: 18) {
+            VStack {
+                HStack {
+                    VStack {
+                        Image(systemName: "person")
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+
+                    }
+                    VStack(alignment: .leading, spacing: 12){
+                        Text("Pengajuan visa \(visaType.lowercased()) \(country.capitalized)")
+                            .font(.headline)
+                        HStack {
+                            Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
+                                .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
+                            Text("\(Date.now.formatted(.dateTime.day().month(.abbreviated))), \(Date.now.formatted(.dateTime.year()))")
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                        }
+                    }
+                    .padding()
                 }
-                VStack(alignment: .leading){
-                    Text("Pengajuan visa")
-                        .font(.headline)
-                    Text("\(visaType.lowercased()) \(country.capitalized)")
-                        .font(.headline)
-                    Text(countries.joined(separator: ", "))
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
+                if visaProgressPercentage <  100 {
+                    Divider()
+                        .padding(.horizontal, 20)
+                    Button(action: {
                         
-                }
-                VStack {
-                    CustomGauge(visaProgressPercentage: visaProgressPercentage, visaProgressColor: visaProgressColor, lineWidth: 10, size: 70)
+                    }, label: {
+                        Text("Lanjutkan")
+                            .padding(.vertical, 12)
+                            .font(.system(size: 16))
+                    })
                 }
             }
+            
         }
     }
     
