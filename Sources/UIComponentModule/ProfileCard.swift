@@ -15,11 +15,7 @@ public struct ProfileCard: View {
     }
     
     public var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 24)
-                .frame(width: width, height: height)
-                .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.1), radius: 10)
+        CardContainer(cornerRadius: 24) {
             VStack {
                 if isAddProfile {
                     ZStack {
@@ -54,7 +50,6 @@ public struct ProfileCard: View {
                 
                 Spacer()
             }
-            .padding()
         }
         .frame(width: width, height: height)
     }
@@ -62,5 +57,4 @@ public struct ProfileCard: View {
 
 #Preview {
     ProfileCard(name: "Iqbal", isAddProfile: false)
-        .background(Color.gray.ignoresSafeArea())
 }
