@@ -23,15 +23,15 @@ public struct CardContainer<Content: View>: View {
     public var body: some View {
         ZStack {
             content()
+                .padding()
         }
         .fixedSize(horizontal: false, vertical: false)
         .background(.white)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(.gray, lineWidth: 1)
         )
-        .padding()
     }
 }
 #Preview {

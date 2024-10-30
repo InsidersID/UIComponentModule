@@ -32,24 +32,25 @@ public struct VisaApplicationCard: View {
             VStack {
                 HStack {
                     VStack {
-                        Image(systemName: "person")
+                        Image(systemName: country)
                             .resizable()
-                            .frame(width: 70, height: 70)
+                            .frame(width: 60, height: 60)
                             .clipShape(Circle())
-
                     }
                     VStack(alignment: .leading, spacing: 12){
                         Text("Pengajuan visa \(visaType.lowercased()) \(country.capitalized)")
-                            .font(.headline)
+                            .font(.subheadline)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
                         HStack {
                             Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
+                                .font(.system(size: 14))
                                 .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
                             Text("\(Date.now.formatted(date: .numeric, time: .omitted))")
-                                .font(.subheadline)
+                                .font(.system(size: 14))
                                 .foregroundStyle(.gray)
                         }
                     }
-                    .padding()
                 }
                 if visaProgressPercentage <  100 {
                     Divider()
@@ -59,18 +60,17 @@ public struct VisaApplicationCard: View {
                     }, label: {
                         Text("Lanjutkan")
                             .padding(.top, 4)
-                            .font(.system(size: 16))
+                            .font(.system(size: 14))
                     })
                 }
             }
-            .padding(.vertical, 12)
         }
     }
     
 }
 
 #Preview {
-    ForEach(1..<3) { item in
+    ForEach(1..<2) { item in
         VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink) {
             print("Card clicked")
         }
