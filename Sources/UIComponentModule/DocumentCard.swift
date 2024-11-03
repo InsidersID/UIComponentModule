@@ -1,8 +1,7 @@
 import SwiftUI
 
 public enum DocumentStatus {
-    case notStarted
-    case inProgress
+    case undone
     case done
 }
 
@@ -14,10 +13,11 @@ public struct DocumentCard: View {
     
     private var statusText: String {
         switch status {
-        case .notStarted:
+        case .undone:
+            if document == "Informasi tambahan" {
+                return "4 dari 4 bagian belum diisi"
+            }
             return "Upload Dokumen"
-        case .inProgress:
-            return "4 dari 4 bagian belum diisi"
         case .done:
             return "Selesai"
         }
@@ -25,15 +25,16 @@ public struct DocumentCard: View {
     
     private var statusColor: Color {
         switch status {
-        case .notStarted:
+        case .undone:
+            if document == "Informasi tambahan" {
+                return .red
+            }
             return .blue
-        case .inProgress:
-            return .red
         case .done:
             return .green
         }
     }
-    public init(height: CGFloat = 142, document: String, status: DocumentStatus = .inProgress) {
+    public init(height: CGFloat = 142, document: String, status: DocumentStatus = .done) {
         self.height = height
         self.document = document
         self.status = status
@@ -42,10 +43,6 @@ public struct DocumentCard: View {
     public var body: some View {
         CardContainer(cornerRadius: 24) {
             ZStack(alignment: .leading) {
-//                RoundedRectangle(cornerRadius: 24)
-//                    .frame(width: width, height: height)
-//                    .foregroundStyle(.white)
-                
                 HStack {
                     VStack(alignment: .leading) {
                         Text(document)
@@ -63,8 +60,10 @@ public struct DocumentCard: View {
                     
                     VStack {
                         HStack {
-                            Text(status == .done ? "Lihat form" : "Mulai")
-                                .foregroundStyle(.blue)
+                            if document == "Informasi tambahan" {
+                                Text(status == .done ? "Lihat form" : "Mulai")
+                                    .foregroundStyle(.blue)
+                            }
                             
                             Image(systemName: "chevron.right")
                                 .foregroundStyle(document == "Informasi tambahan" ? .blue : .secondary)
@@ -85,5 +84,5 @@ public struct DocumentCard: View {
 }
 
 #Preview {
-    DocumentCard(document: "Informasi tambahan", status: .inProgress)
+    DocumentCard(document: "Informasi tambahan", status: .undone)
 }
