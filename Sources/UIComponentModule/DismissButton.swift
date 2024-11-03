@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  UIComponentModule
-//
-//  Created by hendra on 18/10/24.
-//
-
 import SwiftUI
 
 struct DismissButton: View {

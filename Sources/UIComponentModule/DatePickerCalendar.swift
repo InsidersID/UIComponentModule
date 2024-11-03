@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  UIComponentModule
-//
-//  Created by hendra on 15/10/24.
-//
-
 import SwiftUI
 
 public struct DatePickerCalendar: View {

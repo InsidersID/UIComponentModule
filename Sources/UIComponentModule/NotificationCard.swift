@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  UIComponentModule
-//
-//  Created by Balya Elfata on 20/10/24.
-//
-
 import SwiftUI
 
 public struct NotificationCard: View {
