@@ -1,17 +1,22 @@
 import SwiftUI
 
 public struct ProfileCard: View {
-    public var width: CGFloat = 170.5
-    public var height: CGFloat = 224
-    public var photoWidth: CGFloat = .infinity
-    public var photoHeight: CGFloat = 140
+    public var width: CGFloat
+    public var height: CGFloat
+    public var photoWidth: CGFloat
+    public var photoHeight: CGFloat
     public var name: String
     public var isAddProfile: Bool
-    public var isCompleted: Bool = false
+    public var isCompleted: Bool
     
-    public init(name: String, isAddProfile: Bool) {
+    public init(width: CGFloat = 170.5, height: CGFloat = 224, photoWidth: CGFloat = .infinity, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool, isCompleted: Bool = false) {
+        self.width = width
+        self.height = height
+        self.photoWidth = photoWidth
+        self.photoHeight = photoHeight
         self.name = name
         self.isAddProfile = isAddProfile
+        self.isCompleted = isCompleted
     }
     
     public var body: some View {

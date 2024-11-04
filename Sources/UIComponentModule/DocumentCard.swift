@@ -6,7 +6,7 @@ public enum DocumentStatus {
 }
 
 public struct DocumentCard: View {
-    public var width: CGFloat = .infinity
+    public var width: CGFloat
     public var height: CGFloat
     public var document: String
     public var status: DocumentStatus
@@ -34,7 +34,8 @@ public struct DocumentCard: View {
             return .green
         }
     }
-    public init(height: CGFloat = 114, document: String, status: DocumentStatus = .done) {
+    public init(width: CGFloat = .infinity, height: CGFloat = 114, document: String, status: DocumentStatus = .done) {
+        self.width = width
         self.height = height
         self.document = document
         self.status = status
