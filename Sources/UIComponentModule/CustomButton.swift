@@ -20,7 +20,7 @@ public struct CustomButton: View {
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String,textColor: Color = .white, color: Color, buttonWidth: CGFloat = .infinity, buttonHeight: CGFloat = 50, font: CGFloat = 17, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
+    public init(text: String, textColor: Color = .white, color: Color, buttonWidth: CGFloat = .infinity, buttonHeight: CGFloat = 50, font: CGFloat = 17, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
         self.text = text
         self.textColor = textColor
         self.color = color
@@ -38,7 +38,7 @@ public struct CustomButton: View {
             action()
         }) {
             Text(text.prefix(1).capitalized + text.dropFirst())
-                .font(.system(size: font))
+                .font(Font.custom("Inter", size: font))
                 .fontWeight(.semibold)
                 .frame(maxWidth: buttonWidth, maxHeight: buttonHeight)
         }
