@@ -34,7 +34,7 @@ public struct DocumentCard: View {
             return .green
         }
     }
-    public init(height: CGFloat = 142, document: String, status: DocumentStatus = .done) {
+    public init(height: CGFloat = 114, document: String, status: DocumentStatus = .done) {
         self.height = height
         self.document = document
         self.status = status
@@ -42,18 +42,21 @@ public struct DocumentCard: View {
     
     public var body: some View {
         CardContainer(cornerRadius: 24) {
-            ZStack(alignment: .leading) {
+            VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(document)
-                            .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundStyle(.black)
+                            .multilineTextAlignment(.leading)
                         
-                        Spacer()
-                        
-                        Text(statusText)
-                            .foregroundStyle(statusColor)
+                        if document != "Informasi tambahan" {
+                            Text(statusText)
+                                .font(.subheadline)
+                                .foregroundStyle(statusColor)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(2)
+                        }
                     }
                     
                     Spacer()
@@ -67,22 +70,30 @@ public struct DocumentCard: View {
                             
                             Image(systemName: "chevron.right")
                                 .foregroundStyle(document == "Informasi tambahan" ? .blue : .secondary)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                        }
-                        
-                        if document == "Informasi tambahan" {
-                            Spacer()
+                            //                                .fontWeight(.semibold)
                         }
                     }
                 }
-                .padding()
-                .frame(width: width, height: height)
+                
+                Spacer()
+                
+                if document == "Informasi tambahan" {
+                    Text(statusText)
+                        .font(.subheadline)
+                        .foregroundStyle(statusColor)
+                }
             }
+            .frame(width: width, height: height)
         }
     }
 }
 
 #Preview {
     DocumentCard(document: "Informasi tambahan", status: .undone)
+        .padding(.horizontal)
+    HStack {
+        DocumentCard(document: "Rekening Koran", status: .done)
+        DocumentCard(document: "Tiket pesawat", status: .undone)
+    }
+    .padding(.horizontal)
 }
