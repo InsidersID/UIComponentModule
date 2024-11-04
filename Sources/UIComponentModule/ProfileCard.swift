@@ -53,7 +53,7 @@ public struct ProfileCard: View {
                     
                     Spacer()
                     
-                    if isCompleted == false {
+                    if isCompleted == false && isAddProfile == false {
                         Image(systemName: "exclamationmark.circle.fill")
                             .foregroundStyle(.red)
                     }
