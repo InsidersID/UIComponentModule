@@ -46,8 +46,9 @@ public struct ProfileCard: View {
                 
                 HStack {
                     Text(name)
-                        .font(.system(.title2, design: .serif, weight: .bold))
-                        .foregroundStyle(.black)
+                        .font(Font.custom("Inter", size: 16))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.black.opacity(0.75))
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
