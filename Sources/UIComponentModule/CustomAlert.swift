@@ -1,6 +1,7 @@
 import SwiftUI
 
 public struct CustomAlert: View {
+    @Environment(\.dismiss) var dismiss
     let title: String
     let button1: String
     let button2: String
@@ -19,6 +20,9 @@ public struct CustomAlert: View {
         ZStack {
             Color.black.opacity(0.75)
                 .ignoresSafeArea()
+                .onTapGesture {
+                    dismiss()
+                }
             
             VStack {
                 Image(systemName: "exclamationmark.circle.fill")
@@ -39,6 +43,7 @@ public struct CustomAlert: View {
                 HStack {
                     Button() {
                         action1?()
+                        dismiss()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
@@ -54,6 +59,7 @@ public struct CustomAlert: View {
                     
                     Button(role: .destructive) {
                         action2?()
+                        dismiss()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
