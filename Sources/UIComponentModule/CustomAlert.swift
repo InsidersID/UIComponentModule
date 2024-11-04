@@ -4,66 +4,79 @@ public struct CustomAlert: View {
     let title: String
     let button1: String
     let button2: String
-    var action: (() -> Void)? = nil
+    var action1: (() -> Void)? = nil
+    var action2: (() -> Void)? = nil
     
-    public init(title: String, button1: String, button2: String, action: (() -> Void)? = nil) {
+    public init(title: String, button1: String, button2: String, action1: (() -> Void)? = nil, action2: (() -> Void)? = nil) {
         self.title = title
         self.button1 = button1
         self.button2 = button2
-        self.action = action
+        self.action1 = action1
+        self.action2 = action2
     }
     
     public var body: some View {
-        VStack {
-            Image(systemName: "exclamationmark.circle.fill")
-                .foregroundStyle(.red)
+        ZStack {
+            Color.black.opacity(0.75)
+                .ignoresSafeArea()
             
-            Text("Hapus profile?")
-                .foregroundStyle(.red)
-                .fontWeight(.bold)
-                .padding(.vertical)
-            
-            Text("Jika profil dihapus, semua data akan hilang secara otomatis.")
-                .foregroundStyle(.secondary)
-                .font(.caption)
-                .padding(.bottom)
-            
-            HStack {
-                Button() {
-                    action?()
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(.secondary, lineWidth: 1)
-                        Text(button1)
-                            .foregroundStyle(.secondary)
-                            .fontWeight(.semibold)
-                    }
-                    .frame(height: 41)
-                }
-                .buttonStyle(.plain)
+            VStack {
+                Image(systemName: "exclamationmark.circle.fill")
+                    .foregroundStyle(.red)
+                    .font(.title)
                 
-                Button(role: .destructive) {
-                    action?()
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                        Text(button2)
-                            .foregroundStyle(.white)
-                            .fontWeight(.semibold)
+                Text("Hapus profil?")
+                    .foregroundStyle(.red)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding(.bottom)
+                
+                Text("Jika profil dihapus, semua data akan hilang secara otomatis.")
+                    .foregroundStyle(.secondary)
+                    .font(.callout)
+                    .padding(.bottom)
+                
+                HStack {
+                    Button() {
+                        action1?()
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(.white)
+                                .stroke(.secondary, lineWidth: 1)
+                            Text(button1)
+                                .foregroundStyle(button1 == "Skip" ? Color.secondary : Color.red)
+                                .fontWeight(.semibold)
+                        }
+                        .frame(height: 41)
                     }
-                    .frame(height: 42)
+                    .buttonStyle(.plain)
+                    
+                    Button(role: .destructive) {
+                        action2?()
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                            Text(button2)
+                                .foregroundStyle(.white)
+                                .fontWeight(.semibold)
+                        }
+                        .frame(height: 42)
+                    }
                 }
             }
+            .padding()
+            .cornerRadius(16)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(.white)
+            )
+            .padding()
+            .padding()
         }
-        .padding()
-        .cornerRadius(16)
-        .padding()
-        .padding()
-        .padding()
     }
 }
 
 #Preview {
-    CustomAlert(title: "Hapus profile?", button1: "Skip", button2: "Batal")
+    CustomAlert(title: "Hapus profile?", button1: "Hapus", button2: "Batal")
 }
