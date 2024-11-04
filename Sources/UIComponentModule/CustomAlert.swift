@@ -31,13 +31,13 @@ public struct CustomAlert: View {
                     .foregroundStyle(.red)
                     .font(.title)
                 
-                Text("Hapus profil?")
+                Text(title)
                     .foregroundStyle(.red)
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding(.bottom)
                 
-                Text("Jika profil dihapus, semua data akan hilang secara otomatis.")
+                Text(caption)
                     .foregroundStyle(.secondary)
                     .font(.callout)
                     .padding(.bottom)
