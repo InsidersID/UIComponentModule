@@ -3,13 +3,15 @@ import SwiftUI
 public struct CustomAlert: View {
     @Environment(\.dismiss) var dismiss
     let title: String
+    let caption: String
     let button1: String
     let button2: String
     var action1: (() -> Void)? = nil
     var action2: (() -> Void)? = nil
     
-    public init(title: String, button1: String, button2: String, action1: (() -> Void)? = nil, action2: (() -> Void)? = nil) {
+    public init(title: String, caption: String, button1: String, button2: String, action1: (() -> Void)? = nil, action2: (() -> Void)? = nil) {
         self.title = title
+        self.caption = caption
         self.button1 = button1
         self.button2 = button2
         self.action1 = action1
@@ -84,5 +86,5 @@ public struct CustomAlert: View {
 }
 
 #Preview {
-    CustomAlert(title: "Hapus profile?", button1: "Hapus", button2: "Batal")
+    CustomAlert(title: "Hapus profil?", caption: "Jika profil dihapus, semua data akan hilang secara otomatis.", button1: "Hapus", button2: "Batal")
 }
