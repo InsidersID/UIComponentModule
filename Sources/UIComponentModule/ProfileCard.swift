@@ -9,7 +9,7 @@ public struct ProfileCard: View {
     public var isAddProfile: Bool
     public var isCompleted: Bool
     
-    public init(width: CGFloat = 170.5, height: CGFloat = 224, photoWidth: CGFloat = .infinity, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool, isCompleted: Bool = false) {
+    public init(width: CGFloat = 170.5, height: CGFloat = 198, photoWidth: CGFloat = .infinity, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool, isCompleted: Bool = false) {
         self.width = width
         self.height = height
         self.photoWidth = photoWidth
@@ -52,9 +52,12 @@ public struct ProfileCard: View {
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
+                    
+                    if isCompleted == false {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundStyle(.red)
+                    }
                 }
-                
-                Spacer()
             }
         }
         .frame(width: width, height: height)
@@ -62,5 +65,5 @@ public struct ProfileCard: View {
 }
 
 #Preview {
-    ProfileCard(name: "Iqbal", isAddProfile: false)
+    ProfileCard(name: "Iqbal Setiawan", isAddProfile: false)
 }
