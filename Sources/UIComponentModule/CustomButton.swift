@@ -12,6 +12,7 @@ public struct CustomButton: View {
     let text: String
     let textColor: Color
     let color: Color
+    let buttonWidth: CGFloat
     let buttonHeight: CGFloat
     let font: CGFloat
     let cornerRadius: CGFloat
@@ -19,10 +20,11 @@ public struct CustomButton: View {
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String,textColor: Color = .white, color: Color, buttonHeight: CGFloat = 50, font: CGFloat = 17, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
+    public init(text: String,textColor: Color = .white, color: Color, buttonWidth: CGFloat = .infinity, buttonHeight: CGFloat = 50, font: CGFloat = 17, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat = 4, paddingVertical: CGFloat = 8, action: @escaping () -> Void) {
         self.text = text
         self.textColor = textColor
         self.color = color
+        self.buttonWidth = buttonWidth
         self.buttonHeight = buttonHeight
         self.font = font
         self.action = action
@@ -38,7 +40,7 @@ public struct CustomButton: View {
             Text(text.prefix(1).capitalized + text.dropFirst())
                 .font(.system(size: font))
                 .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, maxHeight: buttonHeight)
+                .frame(maxWidth: buttonWidth, maxHeight: buttonHeight)
         }
         .padding(.horizontal, paddingHorizontal)
         .padding(.vertical, paddingVertical)
