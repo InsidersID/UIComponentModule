@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct CustomButton: View {
-
+    
     let text: String
     let textColor: Color
     let color: Color
@@ -20,17 +20,28 @@ public struct CustomButton: View {
     let paddingVertical: CGFloat
     let action: () -> ()
     
-    public init(text: String,textColor: Color = .white, color: Color = Color.primary, buttonWidth: CGFloat = 36, buttonHeight: CGFloat = 36, font: CGFloat, cornerRadius: CGFloat = 14, paddingHorizontal: CGFloat, paddingVertical: CGFloat, action: @escaping () -> Void) {
+    public init(
+        text: String,
+        textColor: Color = .white,
+        color: Color = Color.primary,
+        buttonWidth: CGFloat = .infinity,
+        buttonHeight: CGFloat = 26,
+        font: CGFloat = 17,
+        cornerRadius: CGFloat = 14,
+        paddingHorizontal: CGFloat = 16,
+        paddingVertical: CGFloat = 16,
+        action: @escaping () -> Void
+    ) {
         self.text = text
         self.textColor = textColor
         self.color = color
         self.buttonWidth = buttonWidth
         self.buttonHeight = buttonHeight
         self.font = font
-        self.action = action
         self.cornerRadius = cornerRadius
         self.paddingHorizontal = paddingHorizontal
         self.paddingVertical = paddingVertical
+        self.action = action
     }
     
     public var body: some View {
@@ -39,7 +50,7 @@ public struct CustomButton: View {
         }) {
             Text(text.prefix(1).capitalized + text.dropFirst())
                 .font(Font.custom("Inter", size: font))
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .frame(maxWidth: buttonWidth, maxHeight: buttonHeight)
         }
         .padding(.horizontal, paddingHorizontal)
@@ -51,7 +62,8 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: "ini button", color: .red, font: 18, paddingHorizontal: 16, paddingVertical: 8) {
+    CustomButton(text: "Batal", color: .red, font: 17){
         print("tes")
     }
 }
+
