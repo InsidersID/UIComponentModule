@@ -51,7 +51,7 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: "ini button", color: .red) {
+    CustomButton(text: "ini button", color: .red, font: 18, paddingHorizontal: 16, paddingVertical: 8) {
         print("tes")
     }
 }
