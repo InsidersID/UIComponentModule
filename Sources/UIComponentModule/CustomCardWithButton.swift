@@ -32,7 +32,7 @@ public struct CustomCardWithButton: View {
             Text(text.prefix(1).capitalized + text.dropFirst())
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 300)
-            CustomButton(text: buttonText, color: buttonColor, font: 15, cornerRadius: buttonCornerRadius, paddingHorizontal: paddingButtonHorizontal, paddingVertical: paddingButtonVertical) {
+            CustomButton(text: buttonText, color: buttonColor, fontSize: 15, cornerRadius: buttonCornerRadius, paddingHorizontal: paddingButtonHorizontal, paddingVertical: paddingButtonVertical) {
             }
         }
         .frame(width: 320)

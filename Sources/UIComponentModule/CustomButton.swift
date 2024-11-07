@@ -14,7 +14,8 @@ public struct CustomButton: View {
     let color: Color
     let buttonWidth: CGFloat
     let buttonHeight: CGFloat
-    let font: CGFloat
+    let font: String
+    let fontSize: CGFloat
     let cornerRadius: CGFloat
     let paddingHorizontal: CGFloat
     let paddingVertical: CGFloat
@@ -26,7 +27,8 @@ public struct CustomButton: View {
         color: Color = Color.primary,
         buttonWidth: CGFloat = .infinity,
         buttonHeight: CGFloat = 26,
-        font: CGFloat = 17,
+        font: String = "Inter-Regular",
+        fontSize: CGFloat = 17,
         cornerRadius: CGFloat = 14,
         paddingHorizontal: CGFloat = 16,
         paddingVertical: CGFloat = 16,
@@ -38,6 +40,7 @@ public struct CustomButton: View {
         self.buttonWidth = buttonWidth
         self.buttonHeight = buttonHeight
         self.font = font
+        self.fontSize = fontSize
         self.cornerRadius = cornerRadius
         self.paddingHorizontal = paddingHorizontal
         self.paddingVertical = paddingVertical
@@ -49,8 +52,7 @@ public struct CustomButton: View {
             action()
         }) {
             Text(text.prefix(1).capitalized + text.dropFirst())
-                .font(Font.custom("Inter", size: font))
-                .fontWeight(.bold)
+                .font(Font.custom(font, size: fontSize))
                 .frame(maxWidth: buttonWidth, maxHeight: buttonHeight)
         }
         .padding(.horizontal, paddingHorizontal)
@@ -62,7 +64,7 @@ public struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: "Batal", color: .red, font: 17){
+    CustomButton(text: "Batal", color: .red, fontSize: 17){
         print("tes")
     }
 }
