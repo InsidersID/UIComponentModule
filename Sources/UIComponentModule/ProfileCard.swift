@@ -6,15 +6,17 @@ public struct ProfileCard: View {
     public var photoWidth: CGFloat
     public var photoHeight: CGFloat
     public var name: String
+    public var imageData: Data
     public var isAddProfile: Bool
     public var isCompleted: Bool
     
-    public init(width: CGFloat = 170.5, height: CGFloat = 198, photoWidth: CGFloat = .infinity, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool = false, isCompleted: Bool = false) {
+    public init(width: CGFloat = 170.5, height: CGFloat = 198, photoWidth: CGFloat = .infinity, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool = false, isCompleted: Bool = false, imageData: Data = Data()) {
         self.width = width
         self.height = height
         self.photoWidth = photoWidth
         self.photoHeight = photoHeight
         self.name = name
+        self.imageData = imageData
         self.isAddProfile = isAddProfile
         self.isCompleted = isCompleted
     }
@@ -34,12 +36,22 @@ public struct ProfileCard: View {
                             .foregroundStyle(.white)
                     }
                 } else {
-                    Image("")
-                        .resizable()
-                        .frame(width: photoWidth)
-                        .background(.gray)
-                        .aspectRatio(1, contentMode: .fit)
-                        .cornerRadius(24)
+                    if let image = UIImage(data: imageData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: photoWidth)
+                            .background(.gray)
+                            .aspectRatio(1, contentMode: .fit)
+                            .cornerRadius(24)
+                    } else {
+                        Image("")
+                            .resizable()
+                            .frame(width: photoWidth)
+                            .background(.gray)
+                            .aspectRatio(1, contentMode: .fit)
+                            .cornerRadius(24)
+                    }
+ 
                 }
                 
                 Spacer()
