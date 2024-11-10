@@ -10,6 +10,7 @@ public struct DocumentCard: View {
     public var height: CGFloat
     public var document: String
     public var status: DocumentStatus
+    public var requiresMarkOnly: Bool = false
     
     private var statusText: String {
         switch status {
@@ -17,7 +18,7 @@ public struct DocumentCard: View {
             if document == "Informasi tambahan" {
                 return "4 dari 4 bagian belum diisi"
             }
-            return "Upload Dokumen"
+            return requiresMarkOnly ? "Tandai Ada" : "Upload Dokumen"
         case .done:
             return "Selesai"
         }
