@@ -46,14 +46,14 @@ public struct DatePickerCalendar: View {
             }
             .padding(8)
             
-            HStack(spacing: 32) {
-                Text("Mo")
-                Text("Tu")
-                Text("We")
-                Text("Th")
-                Text("Fr")
-                Text("Sa")
-                Text("Su")
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 16) {
+                Text("Mon")
+                Text("Tue")
+                Text("Wed")
+                Text("Thu")
+                Text("Fri")
+                Text("Sat")
+                Text("Sun")
                     .foregroundStyle(.red)
             }
             .padding(8)
