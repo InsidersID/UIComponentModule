@@ -24,7 +24,7 @@ public struct ProfileCard: View {
             VStack {
                 if isAddProfile {
                     ZStack {
-                        Color.blue.opacity(0.3)
+                        Color(red: 0.4, green: 0.83, blue: 0.91)
                             .frame(width: photoWidth)
                             .aspectRatio(1, contentMode: .fit)
                             .cornerRadius(24)
