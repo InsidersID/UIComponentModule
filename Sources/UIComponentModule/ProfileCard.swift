@@ -75,5 +75,8 @@ public struct ProfileCard: View {
 }
 
 #Preview {
-    ProfileCard(name: "Iqbal Setiawan")
+    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16){
+        ProfileCard(name: "Iqbal Setiawan")
+        ProfileCard(name: "Iqbal Setiawan")
+    }
 }
