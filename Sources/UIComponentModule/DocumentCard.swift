@@ -28,11 +28,11 @@ public struct DocumentCard: View {
         switch status {
         case .undone:
             if document == "Informasi tambahan" {
-                return .red
+                return Color(red: 0.96, green: 0.01, blue: 0.06).opacity(0.75)
             }
-            return .blue
+            return Color(red: 0, green: 0.55, blue: 0.85)
         case .done:
-            return .green
+            return Color(red: 0.19, green: 0.76, blue: 0.16)
         }
     }
     public init(width: CGFloat = .infinity, height: CGFloat = 114, document: String, status: DocumentStatus = .done, requiresMarkOnly: Bool = false) {
@@ -49,13 +49,13 @@ public struct DocumentCard: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(document)
-                            .fontWeight(.semibold)
+                            .font(Font.custom("Inter-SemiBold", size: 16))
                             .foregroundStyle(.black)
                             .multilineTextAlignment(.leading)
                         
                         if document != "Informasi tambahan" {
                             Text(statusText)
-                                .font(.subheadline)
+                                .font(Font.custom("Inter-Medium", size: 14))
                                 .foregroundStyle(statusColor)
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(2)
@@ -68,11 +68,12 @@ public struct DocumentCard: View {
                         HStack {
                             if document == "Informasi tambahan" {
                                 Text(status == .done ? "Lihat form" : "Mulai")
-                                    .foregroundStyle(.blue)
+                                    .font(Font.custom("Inter-Medium", size: 14))
+                                    .foregroundStyle(Color(red: 0, green: 0.55, blue: 0.85))
                             }
                             
                             Image(systemName: "chevron.right")
-                                .foregroundStyle(document == "Informasi tambahan" ? .blue : .secondary)
+                                .foregroundStyle(document == "Informasi tambahan" ? Color(red: 0, green: 0.55, blue: 0.85) : Color(red: 0.04, green: 0.04, blue: 0.04).opacity(0.5))
                             //                                .fontWeight(.semibold)
                         }
                     }
@@ -82,7 +83,7 @@ public struct DocumentCard: View {
                 
                 if document == "Informasi tambahan" {
                     Text(statusText)
-                        .font(.subheadline)
+                        .font(Font.custom("Inter-Medium", size: 14))
                         .foregroundStyle(statusColor)
                 }
             }
