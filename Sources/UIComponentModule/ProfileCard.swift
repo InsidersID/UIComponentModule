@@ -61,7 +61,7 @@ public struct ProfileCard: View {
                         .foregroundStyle(Color(red: 0.04, green: 0.04, blue: 0.04).opacity(0.75))
                         .multilineTextAlignment(.leading)
                     
-//                    Spacer()
+                    Spacer()
                     
                     if isCompleted == false && isAddProfile == false {
                         Image(systemName: "exclamationmark.circle.fill")
