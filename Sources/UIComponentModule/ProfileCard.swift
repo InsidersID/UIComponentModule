@@ -10,7 +10,7 @@ public struct ProfileCard: View {
     public var isAddProfile: Bool
     public var isCompleted: Bool
     
-    public init(width: CGFloat = .leastNormalMagnitude, height: CGFloat = .leastNormalMagnitude, photoWidth: CGFloat = 146.5, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool = false, isCompleted: Bool = false, imageData: Data = Data()) {
+    public init(width: CGFloat = 170.6, height: CGFloat = 198, photoWidth: CGFloat = 146.5, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool = false, isCompleted: Bool = false, imageData: Data = Data()) {
         self.width = width
         self.height = height
         self.photoWidth = photoWidth
