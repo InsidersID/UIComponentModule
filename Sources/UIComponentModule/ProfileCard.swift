@@ -20,7 +20,7 @@ public struct ProfileCard: View {
             let photoSize = width * 0.85
             
             CardContainer(cornerRadius: 24) {
-                VStack {
+                VStack(alignment: .center) {
                     VStack {
                         if isAddProfile {
                             ZStack {
@@ -65,16 +65,18 @@ public struct ProfileCard: View {
                     }
                 }
             }
-            .frame(width: width, height: height)
+//            .frame(width: width, height: height, alignment: .center)
         }
-        .aspectRatio(0.86, contentMode: .fit)
+//        .aspectRatio(0.86, contentMode: .fit)
     }
 }
 
 #Preview {
-    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 0){
-        ProfileCard(name: "Iqbal Setiawan")
-        ProfileCard(name: "Iqbal Setiawan", isAddProfile: true)
+    ZStack(alignment: .center) {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 0){
+            ProfileCard(name: "Iqbal Setiawan")
+            ProfileCard(name: "Iqbal Setiawan", isAddProfile: true)
+        }
+        .padding()
     }
-    .frame(alignment: .center)
 }
