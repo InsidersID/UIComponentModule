@@ -1,20 +1,12 @@
 import SwiftUI
 
 public struct ProfileCard: View {
-    public var width: CGFloat
-    public var height: CGFloat
-    public var photoWidth: CGFloat
-    public var photoHeight: CGFloat
     public var name: String
     public var imageData: Data
     public var isAddProfile: Bool
     public var isCompleted: Bool
     
-    public init(width: CGFloat = 170.6, height: CGFloat = 198, photoWidth: CGFloat = 146.5, photoHeight: CGFloat = 140, name: String, isAddProfile: Bool = false, isCompleted: Bool = false, imageData: Data = Data()) {
-        self.width = width
-        self.height = height
-        self.photoWidth = photoWidth
-        self.photoHeight = photoHeight
+    public init(name: String, isAddProfile: Bool = false, isCompleted: Bool = false, imageData: Data = Data()) {
         self.name = name
         self.imageData = imageData
         self.isAddProfile = isAddProfile
@@ -22,61 +14,67 @@ public struct ProfileCard: View {
     }
     
     public var body: some View {
-        CardContainer(cornerRadius: 24) {
-            VStack {
+        GeometryReader { geometry in
+            let width = geometry.size.width - 16
+            let height = geometry.size.height - 16
+            let photoSize = width * 0.85
+            
+            CardContainer(cornerRadius: 24) {
                 VStack {
-                    if isAddProfile {
-                        ZStack {
-                            Color(red: 0.4, green: 0.83, blue: 0.91)
-                                .frame(width: photoWidth, height: photoHeight)
-                                .aspectRatio(1, contentMode: .fit)
-                                .cornerRadius(24)
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 68.5, height: 68.5)
-                                .foregroundStyle(.white)
-                        }
-                    } else {
-                        if let image = UIImage(data: imageData) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .frame(width: photoWidth, height: photoHeight)
-                                .cornerRadius(24)
+                    VStack {
+                        if isAddProfile {
+                            ZStack {
+                                Color(red: 0.4, green: 0.83, blue: 0.91)
+                                    .frame(width: photoSize, height: photoSize)
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .cornerRadius(24)
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: photoSize * 0.4, height: photoSize * 0.4)
+                                    .foregroundStyle(.white)
+                            }
                         } else {
-                            Image("")
-                                .resizable()
-                                .frame(width: photoWidth, height: photoHeight)
-                                .background(Color(red: 0.85, green: 0.85, blue: 0.85))
-                                .cornerRadius(24)
+                            if let image = UIImage(data: imageData) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .frame(width: photoSize, height: photoSize)
+                                    .cornerRadius(24)
+                            } else {
+                                Image("")
+                                    .resizable()
+                                    .frame(width: photoSize, height: photoSize)
+                                    .background(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                    .cornerRadius(24)
+                            }
                         }
-                        
                     }
-                }
-                .padding(.bottom)
-                
-                HStack {
-                    Text(name)
-                        .font(Font.custom("Inter-SemiBold", size: 16))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color(red: 0.04, green: 0.04, blue: 0.04).opacity(0.75))
-                        .multilineTextAlignment(.leading)
-                    
-                    Spacer()
-                    
-                    if isCompleted == false && isAddProfile == false {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .foregroundStyle(.red)
+                    .padding(.bottom)
+
+                    HStack {
+                        Text(name)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.black.opacity(0.75))
+                            .multilineTextAlignment(.leading)
+                        
+                        Spacer()
+                        
+                        if !isCompleted && !isAddProfile {
+                            Image(systemName: "exclamationmark.circle.fill")
+                                .foregroundColor(.red)
+                        }
                     }
                 }
             }
+            .frame(width: width, height: height)
         }
-        .frame(width: width, height: height)
+        .aspectRatio(0.86, contentMode: .fit)
     }
 }
 
 #Preview {
-    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16){
+    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 0){
         ProfileCard(name: "Iqbal Setiawan")
-        ProfileCard(name: "Iqbal Setiawan")
+        ProfileCard(name: "Iqbal Setiawan", isAddProfile: true)
     }
+    .frame(alignment: .center)
 }
