@@ -15,8 +15,8 @@ public struct ProfileCard: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            let width = geometry.size.width - 16
-            let height = geometry.size.height - 16
+            let width = geometry.size.width
+            let height = geometry.size.height
             let photoSize = width * 0.85
             
             CardContainer(cornerRadius: 24) {
@@ -26,7 +26,6 @@ public struct ProfileCard: View {
                             ZStack {
                                 Color(red: 0.4, green: 0.83, blue: 0.91)
                                     .frame(width: photoSize, height: photoSize)
-                                    .aspectRatio(1, contentMode: .fit)
                                     .cornerRadius(24)
                                 Image(systemName: "plus")
                                     .resizable()
@@ -48,8 +47,9 @@ public struct ProfileCard: View {
                             }
                         }
                     }
-                    .padding(.bottom)
 
+                    Spacer()
+                    
                     HStack {
                         Text(name)
                             .font(.system(size: 16, weight: .semibold))
@@ -65,15 +65,16 @@ public struct ProfileCard: View {
                     }
                 }
             }
-//            .frame(width: width, height: height, alignment: .center)
+            .frame(width: width, height: height, alignment: .center)
         }
-//        .aspectRatio(0.86, contentMode: .fit)
+        .aspectRatio(170.5/198, contentMode: .fit)
     }
 }
 
 #Preview {
     ZStack(alignment: .center) {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 0){
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 20), GridItem(.flexible())], spacing: 20){
+            ProfileCard(name: "Iqbal Setiawan")
             ProfileCard(name: "Iqbal Setiawan")
             ProfileCard(name: "Iqbal Setiawan", isAddProfile: true)
         }
