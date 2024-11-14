@@ -15,14 +15,16 @@ public struct VisaApplicationCard: View {
     let countries: [String]
     let visaProgressPercentage: Double
     let visaProgressColor: Color
+    let createdAt: Date
     let action: () -> ()
     
-    public init(visaType: String, country: String, countries: [String], visaProgressPercentage: Double, visaProgressColor: Color, action: @escaping () -> Void) {
+    public init(visaType: String, country: String, countries: [String], visaProgressPercentage: Double, visaProgressColor: Color, createdAt: Date, action: @escaping () -> Void) {
         self.visaType = visaType
         self.country = country
         self.countries = countries
         self.visaProgressPercentage = visaProgressPercentage
         self.visaProgressColor = visaProgressColor
+        self.createdAt = createdAt
         self.action = action
     }
     
@@ -46,7 +48,7 @@ public struct VisaApplicationCard: View {
                             Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
                                 .font(.system(size: 14))
                                 .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
-                            Text("\(Date.now.formatted(date: .numeric, time: .omitted))")
+                            Text("\(createdAt.formatted(date: .numeric, time: .omitted))")
                                 .font(.system(size: 14))
                                 .foregroundStyle(.gray)
                         }
@@ -71,12 +73,12 @@ public struct VisaApplicationCard: View {
 
 #Preview {
     ForEach(1..<2) { item in
-        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink) {
+        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink, createdAt: .now) {
             print("Card clicked")
         }
     }
     ForEach(0..<2) { item in
-        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 100, visaProgressColor: .pink) {
+        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 100, visaProgressColor: .pink, createdAt: .now) {
             print("Card clicked")
         }
     }
