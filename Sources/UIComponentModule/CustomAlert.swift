@@ -27,9 +27,9 @@ public struct CustomAlert: View {
                 }
             
             VStack {
-                Image(systemName: "exclamationmark.circle.fill")
-                    .foregroundStyle(.red)
-                    .font(.title)
+                Image("alert_asset")
+                    .resizable()
+                    .frame(width: 87, height: 82)
                 
                 Text(title)
                     .foregroundStyle(.red)
