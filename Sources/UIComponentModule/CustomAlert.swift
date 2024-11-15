@@ -38,12 +38,12 @@ public struct CustomAlert: View {
                     .frame(width: 87, height: 82)
                 
                 Text(title)
-                    .foregroundStyle(.danger5)
+                    .foregroundStyle(Color("danger5", bundle: .main))
                     .font(.custom("Inter-Bold", size: 19))
                     .padding(.bottom)
                 
                 Text(caption)
-                    .foregroundStyle(.blackOpacity3)
+                    .foregroundStyle(Color("blackOpacity3", bundle: .main))
                     .font(.custom("Inter-Regular", size: 14))
                     .padding(.bottom)
                 
@@ -54,10 +54,10 @@ public struct CustomAlert: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(.white)
-                                .stroke(.blackOpacity2, lineWidth: 1)
+                                .fill(Color("white", bundle: .main))
+                                .stroke(Color("blackOpacity2", bundle: .main), lineWidth: 1)
                             Text(button1)
-                                .foregroundStyle(button1 == "Skip" ? Color.blackOpacity2 : Color.danger5)
+                                .foregroundStyle(button1 == "Skip" ? Color("blackOpacity2", bundle: .main) : Color("danger5", bundle: .main))
                                 .font(.custom("Inter-SemiBold", size: 14))
                         }
                         .frame(height: 41)
@@ -70,9 +70,9 @@ public struct CustomAlert: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
-                                .fill(.danger5)
+                                .fill(Color("danger5", bundle: .main))
                             Text(button2)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color("white", bundle: .main))
                                 .font(.custom("Inter-SemiBold", size: 14))
                         }
                         .frame(height: 42)
@@ -83,7 +83,7 @@ public struct CustomAlert: View {
             .cornerRadius(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color("white", bundle: .main))
             )
             .padding()
             .padding()

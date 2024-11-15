@@ -24,13 +24,13 @@ public struct ProfileCard: View {
                     VStack {
                         if isAddProfile {
                             ZStack {
-                                Color(red: 0.4, green: 0.83, blue: 0.91)
+                                Color("secondary4", bundle: .main)
                                     .frame(width: photoSize, height: photoSize)
                                     .cornerRadius(24)
                                 Image(systemName: "plus")
                                     .resizable()
                                     .frame(width: photoSize * 0.4, height: photoSize * 0.4)
-                                    .foregroundStyle(.white)
+                                    .foregroundStyle(Color("white", bundle: .main))
                             }
                         } else {
                             if let image = UIImage(data: imageData) {
@@ -52,15 +52,15 @@ public struct ProfileCard: View {
                     
                     HStack {
                         Text(name)
-                            .font(.custom("Inter-SemiBold", size: 16)
-                            .foregroundColor(.blackOpacity4)
+                            .foregroundStyle(Color("blackOpacity4", bundle: .main))
                             .multilineTextAlignment(.leading)
+                            .font(.custom("Inter-SemiBold", size: 16))
                         
                         Spacer()
                         
                         if !isCompleted && !isAddProfile {
                             Image(systemName: "exclamationmark.circle.fill")
-                                .foregroundColor(.red)
+                                .foregroundColor(Color("danger5", bundle: .main))
                         }
                     }
                 }
