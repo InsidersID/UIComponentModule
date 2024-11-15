@@ -23,7 +23,13 @@ public struct CustomAlert: View {
             Color.black.opacity(0.75)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    dismiss()
+                    if button1 == "Skip" {
+                        action1?()
+                        dismiss()
+                    } else {
+                        action2?()
+                        dismiss()
+                    }
                 }
             
             VStack {
