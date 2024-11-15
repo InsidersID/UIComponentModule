@@ -60,7 +60,7 @@ public struct VisaApplicationCard: View {
                         Divider()
                             .padding(.horizontal, 20)
                         Button(action: {
-                            action()
+                            
                         }, label: {
                             Text("Lanjutkan")
                                 .padding(.top, 4)
@@ -69,6 +69,9 @@ public struct VisaApplicationCard: View {
                     }
                 }
             }
+        }
+        .onTapGesture {
+            action()
         }
     }
     
