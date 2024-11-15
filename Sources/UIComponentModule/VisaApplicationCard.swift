@@ -34,7 +34,7 @@ public struct VisaApplicationCard: View {
             VStack {
                 HStack {
                     VStack {
-                        Image(systemName: country)
+                        Image(country)
                             .resizable()
                             .frame(width: 60, height: 60)
                             .clipShape(Circle())
