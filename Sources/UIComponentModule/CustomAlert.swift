@@ -38,14 +38,13 @@ public struct CustomAlert: View {
                     .frame(width: 87, height: 82)
                 
                 Text(title)
-                    .foregroundStyle(.red)
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .foregroundStyle(.danger5)
+                    .font(.custom("Inter-Bold", size: 19))
                     .padding(.bottom)
                 
                 Text(caption)
-                    .foregroundStyle(.secondary)
-                    .font(.callout)
+                    .foregroundStyle(.blackOpacity3)
+                    .font(.custom("Inter-Regular", size: 14))
                     .padding(.bottom)
                 
                 HStack {
@@ -56,10 +55,10 @@ public struct CustomAlert: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(.white)
-                                .stroke(.secondary, lineWidth: 1)
+                                .stroke(.blackOpacity2, lineWidth: 1)
                             Text(button1)
-                                .foregroundStyle(button1 == "Skip" ? Color.secondary : Color.red)
-                                .fontWeight(.semibold)
+                                .foregroundStyle(button1 == "Skip" ? Color.blackOpacity2 : Color.danger5)
+                                .font(.custom("Inter-SemiBold", size: 14))
                         }
                         .frame(height: 41)
                     }
@@ -71,9 +70,10 @@ public struct CustomAlert: View {
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
+                                .fill(.danger5)
                             Text(button2)
                                 .foregroundStyle(.white)
-                                .fontWeight(.semibold)
+                                .font(.custom("Inter-SemiBold", size: 14))
                         }
                         .frame(height: 42)
                     }
