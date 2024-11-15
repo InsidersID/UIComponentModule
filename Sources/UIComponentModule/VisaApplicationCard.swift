@@ -31,13 +31,14 @@ public struct VisaApplicationCard: View {
     
     public var body: some View {
         CardContainer(cornerRadius: 18) {
-            VStack {
+            VStack(alignment: .leading) {
                 HStack {
                     VStack {
-                        Image(systemName: country)
+                        Image(country)
                             .resizable()
                             .frame(width: 60, height: 60)
                             .clipShape(Circle())
+                            .padding(.horizontal)
                     }
                     VStack(alignment: .leading, spacing: 12){
                         Text("Pengajuan visa \(visaType.lowercased()) \(country.capitalized)")
@@ -55,17 +56,22 @@ public struct VisaApplicationCard: View {
                     }
                 }
                 if visaProgressPercentage <  100 {
-                    Divider()
-                        .padding(.horizontal, 20)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Lanjutkan")
-                            .padding(.top, 4)
-                            .font(.system(size: 14))
-                    })
+                    VStack {
+                        Divider()
+                            .padding(.horizontal, 20)
+                        Button(action: {
+                            
+                        }, label: {
+                            Text("Lanjutkan")
+                                .padding(.top, 4)
+                                .font(.system(size: 14))
+                        })
+                    }
                 }
             }
+        }
+        .onTapGesture {
+            action()
         }
     }
     
