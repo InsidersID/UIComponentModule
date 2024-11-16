@@ -54,7 +54,6 @@ public struct DatePickerCalendar: View {
                 Text("Fri")
                 Text("Sat")
                 Text("Sun")
-                    .foregroundStyle(.red)
             }
             .padding(8)
             .foregroundStyle(.secondary)
