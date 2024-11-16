@@ -53,7 +53,6 @@ public struct CustomAlert: View {
                 HStack {
                     Button() {
                         action1?()
-                        dismiss()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
@@ -71,7 +70,6 @@ public struct CustomAlert: View {
                     
                     Button(role: .destructive) {
                         action2?()
-                        dismiss()
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 8)
