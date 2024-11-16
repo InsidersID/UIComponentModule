@@ -58,7 +58,7 @@ public struct CustomAlert: View {
                                 .fill(Color("white", bundle: .main))
                                 .stroke(Color("blackOpacity2", bundle: .main), lineWidth: 1)
                             Text(button1)
-                                .foregroundStyle(button1 == "Skip" ? Color("blackOpacity2", bundle: .main) : Color("danger5", bundle: .main))
+                                .foregroundStyle(Color("blackOpacity2", bundle: .main))
                                 .font(.custom("Inter-SemiBold", size: 14))
                         }
                         .frame(height: 41)
