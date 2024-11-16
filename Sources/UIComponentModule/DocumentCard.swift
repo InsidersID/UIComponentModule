@@ -81,7 +81,7 @@ public struct DocumentCard: View {
                 
                 Spacer()
                 
-                if document == "Informasi tambahan" {
+                if document == "Informasi tambahan" || document == "Form aplikasi" {
                     Text(statusText)
                         .font(Font.custom("Inter-Medium", size: 14))
                         .foregroundStyle(statusColor)
