@@ -26,10 +26,8 @@ public struct CustomAlert: View {
                 .onTapGesture {
                     if button1 == "Skip" {
                         action1?()
-                        dismiss()
                     } else {
                         action2?()
-                        dismiss()
                     }
                 }
             
