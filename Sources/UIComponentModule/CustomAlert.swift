@@ -20,8 +20,9 @@ public struct CustomAlert: View {
     
     public var body: some View {
         ZStack {
-            Color.black.opacity(0.75)
+            Color.clear
                 .ignoresSafeArea()
+                .contentShape(Rectangle())
                 .onTapGesture {
                     if button1 == "Skip" {
                         action1?()
