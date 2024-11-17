@@ -28,11 +28,11 @@ public struct DocumentCard: View {
         switch status {
         case .undone:
             if document == "Informasi tambahan" {
-                return Color(red: 0.96, green: 0.01, blue: 0.06).opacity(0.75)
+                return Color("danger4", bundle: .main)
             }
-            return Color(red: 0, green: 0.55, blue: 0.85)
+            return Color("primary5", bundle: .main)
         case .done:
-            return Color(red: 0.19, green: 0.76, blue: 0.16)
+            return Color("success6", bundle: .main)
         }
     }
     public init(width: CGFloat = .infinity, height: CGFloat = 114, document: String, status: DocumentStatus = .done, requiresMarkOnly: Bool = false) {
@@ -50,7 +50,7 @@ public struct DocumentCard: View {
                     VStack(alignment: .leading) {
                         Text(document)
                             .font(Font.custom("Inter-SemiBold", size: 16))
-                            .foregroundStyle(.black)
+                            .foregroundStyle(Color("black", bundle: .main))
                             .multilineTextAlignment(.leading)
                         
                         if document != "Informasi tambahan" {
