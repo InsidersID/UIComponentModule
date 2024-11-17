@@ -50,7 +50,7 @@ public struct DocumentCard: View {
                     VStack(alignment: .leading) {
                         Text(document)
                             .font(Font.custom("Inter-SemiBold", size: 16))
-                            .foregroundStyle(Color("black", bundle: .main))
+                            .foregroundStyle(Color("blackOpacity5", bundle: .main))
                             .multilineTextAlignment(.leading)
                         
                         if document != "Informasi tambahan" {
