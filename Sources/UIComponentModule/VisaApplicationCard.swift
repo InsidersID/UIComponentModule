@@ -42,16 +42,17 @@ public struct VisaApplicationCard: View {
                     }
                     VStack(alignment: .leading, spacing: 12){
                         Text("Pengajuan visa \(visaType.lowercased()) \(country.capitalized)")
-                            .font(.subheadline)
+                            .font(.custom("Inter-SemiBold", size: 16))
+                            .foregroundStyle(Color("blackOpacity4"))
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
                         HStack {
                             Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
-                                .font(.system(size: 14))
-                                .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
+                                .font(.custom("Inter-Regular", size: 14))
+                                .foregroundStyle(visaProgressPercentage < 100 ? Color("danger5") : Color("success6"))
                             Text("\(createdAt.formatted(date: .numeric, time: .omitted))")
-                                .font(.system(size: 14))
-                                .foregroundStyle(.gray)
+                                .font(.custom("Inter-Regular", size: 14))
+                                .foregroundStyle(Color("blackOpacity3"))
                         }
                     }
                 }
@@ -63,8 +64,9 @@ public struct VisaApplicationCard: View {
                             
                         }, label: {
                             Text("Lanjutkan")
+                                .font(.custom("Inter-Medium", size: 14))
+                                .foregroundStyle(Color("primary5"))
                                 .padding(.top, 4)
-                                .font(.system(size: 14))
                         })
                     }
                 }
