@@ -53,7 +53,7 @@ public struct DocumentCard: View {
                             .foregroundStyle(Color("blackOpacity5", bundle: .main))
                             .multilineTextAlignment(.leading)
                         
-                        if document != "Informasi tambahan" || document != "Form aplikasi" {
+                        if document != "Informasi tambahan" && document != "Form aplikasi" {
                             Text(statusText)
                                 .font(Font.custom("Inter-Medium", size: 14))
                                 .foregroundStyle(statusColor)
