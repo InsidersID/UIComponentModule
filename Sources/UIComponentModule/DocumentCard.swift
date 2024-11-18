@@ -53,7 +53,7 @@ public struct DocumentCard: View {
                             .foregroundStyle(Color("blackOpacity5", bundle: .main))
                             .multilineTextAlignment(.leading)
                         
-                        if document != "Informasi tambahan" {
+                        if document != "Informasi tambahan" || document != "Form aplikasi" {
                             Text(statusText)
                                 .font(Font.custom("Inter-Medium", size: 14))
                                 .foregroundStyle(statusColor)
@@ -66,14 +66,14 @@ public struct DocumentCard: View {
                     
                     VStack {
                         HStack {
-                            if document == "Informasi tambahan" {
+                            if document == "Informasi tambahan" || document == "Form aplikasi" {
                                 Text(status == .done ? "Lihat form" : "Mulai")
                                     .font(Font.custom("Inter-Medium", size: 14))
                                     .foregroundStyle(Color(red: 0, green: 0.55, blue: 0.85))
                             }
                             
                             Image(systemName: "chevron.right")
-                                .foregroundStyle(document == "Informasi tambahan" ? Color(red: 0, green: 0.55, blue: 0.85) : Color(red: 0.04, green: 0.04, blue: 0.04).opacity(0.5))
+                                .foregroundStyle(document == "Informasi tambahan" || document == "Form aplikasi" ? Color(red: 0, green: 0.55, blue: 0.85) : Color(red: 0.04, green: 0.04, blue: 0.04).opacity(0.5))
                             //                                .fontWeight(.semibold)
                         }
                     }
