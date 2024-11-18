@@ -16,7 +16,6 @@ public struct VisaApplicationCard: View {
     let visaProgressPercentage: Double
     let visaProgressColor: Color
     let createdAt: Date
-    let action: () -> ()
     
     public init(visaType: String, country: String, countries: [String], visaProgressPercentage: Double, visaProgressColor: Color, createdAt: Date, action: @escaping () -> Void) {
         self.visaType = visaType
@@ -25,7 +24,6 @@ public struct VisaApplicationCard: View {
         self.visaProgressPercentage = visaProgressPercentage
         self.visaProgressColor = visaProgressColor
         self.createdAt = createdAt
-        self.action = action
     }
     
     
@@ -73,9 +71,6 @@ public struct VisaApplicationCard: View {
                     }
                 }
             }
-        }
-        .onTapGesture {
-            action()
         }
     }
     
