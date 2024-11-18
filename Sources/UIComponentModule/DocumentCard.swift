@@ -27,7 +27,7 @@ public struct DocumentCard: View {
     private var statusColor: Color {
         switch status {
         case .undone:
-            if document == "Informasi tambahan" {
+            if document == "Informasi tambahan" || document == "Form aplikasi" {
                 return Color("danger4", bundle: .main)
             }
             return Color("primary5", bundle: .main)
