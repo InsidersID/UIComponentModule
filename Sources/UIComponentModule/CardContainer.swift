@@ -26,7 +26,7 @@ public struct CardContainer<Content: View>: View {
                 .padding()
         }
         .fixedSize(horizontal: false, vertical: false)
-        .background(Color("white", bundle: .main))
+//        .background(Color("white", bundle: .main))
         .frame(maxWidth: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
