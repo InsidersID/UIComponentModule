@@ -30,7 +30,8 @@ public struct CardContainer<Content: View>: View {
         .frame(maxWidth: .infinity)
         .overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(.gray, lineWidth: 1)
+                .stroke(Color("blackOpacity2"), lineWidth: 1)
+            //                .stroke(.gray, lineWidth: 1)
         )
     }
 }
