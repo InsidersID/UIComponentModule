@@ -60,14 +60,10 @@ public struct VisaApplicationCard: View {
                             .frame(width: .infinity, height: 1)
                             .foregroundStyle(Color("blackOpacity2"))
                             .padding(.horizontal, 20)
-                        Button(action: {
-                            
-                        }, label: {
-                            Text("Lanjutkan")
-                                .font(.custom("Inter-Medium", size: 14))
-                                .foregroundStyle(Color("primary5"))
-                                .padding(.top, 4)
-                        })
+                        Text("Lanjutkan")
+                            .font(.custom("Inter-Medium", size: 14))
+                            .foregroundStyle(Color("primary5"))
+                            .padding(.top, 4)
                     }
                 }
             }
