@@ -15,7 +15,7 @@ public struct DocumentCard: View {
     private var statusText: String {
         switch status {
         case .undone:
-            if document == "Informasi tambahan" {
+            if document == "Informasi tambahan" || document == "Form aplikasi" {
                 return "4 dari 4 bagian belum diisi"
             }
             return requiresMarkOnly ? "Tandai Ada" : "Upload Dokumen"
