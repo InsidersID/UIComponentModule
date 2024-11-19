@@ -5,7 +5,6 @@
 //  Created by Nur Nisrina on 07/10/24.
 //
 
-import HealthKit
 import SwiftUI
 
 public struct VisaApplicationCard: View {
@@ -46,7 +45,7 @@ public struct VisaApplicationCard: View {
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
                         HStack {
-                            Text("\(visaProgressPercentage < 100 && isCompleted ? "\(Int(visaProgressPercentage))%" : "Selesai")")
+                            Text("\(!isCompleted ? "\(Int(visaProgressPercentage))%" : "Selesai")")
                                 .font(.system(size: 14))
                                 .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
                             Text("\(createdAt.formatted(date: .numeric, time: .omitted))")
