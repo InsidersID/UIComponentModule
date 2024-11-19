@@ -9,7 +9,7 @@ import HealthKit
 import SwiftUI
 
 public struct VisaApplicationCard: View {
-    
+    let isCompleted: Bool
     let visaType: String
     let country: String
     let countries: [String]
@@ -17,7 +17,8 @@ public struct VisaApplicationCard: View {
     let visaProgressColor: Color
     let createdAt: Date
     
-    public init(visaType: String, country: String, countries: [String], visaProgressPercentage: Double, visaProgressColor: Color, createdAt: Date, action: @escaping () -> Void) {
+    public init(isCompleted: Bool, visaType: String, country: String, countries: [String], visaProgressPercentage: Double, visaProgressColor: Color, createdAt: Date, action: @escaping () -> Void) {
+        self.isCompleted = isCompleted
         self.visaType = visaType
         self.country = country
         self.countries = countries
@@ -45,9 +46,9 @@ public struct VisaApplicationCard: View {
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
                         HStack {
-                            Text("\(visaProgressPercentage < 100 ? "\(Int(visaProgressPercentage))%" : "Selesai")")
-                                .font(.custom("Inter-Regular", size: 14))
-                                .foregroundStyle(visaProgressPercentage < 100 ? Color("danger5") : Color("success6"))
+                            Text("\(visaProgressPercentage < 100 && isCompleted ? "\(Int(visaProgressPercentage))%" : "Selesai")")
+                                .font(.system(size: 14))
+                                .foregroundStyle(visaProgressPercentage < 100 ? .red : .green)
                             Text("\(createdAt.formatted(date: .numeric, time: .omitted))")
                                 .font(.custom("Inter-Regular", size: 14))
                                 .foregroundStyle(Color("blackOpacity3"))
@@ -74,12 +75,12 @@ public struct VisaApplicationCard: View {
 
 #Preview {
     ForEach(1..<2) { item in
-        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink, createdAt: .now) {
+        VisaApplicationCard(isCompleted: false, visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 75, visaProgressColor: .pink, createdAt: .now) {
             print("Card clicked")
         }
     }
     ForEach(0..<2) { item in
-        VisaApplicationCard(visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 100, visaProgressColor: .pink, createdAt: .now) {
+        VisaApplicationCard(isCompleted: false, visaType: "turis", country: "itali", countries: ["italy", "jerman"], visaProgressPercentage: 100, visaProgressColor: .pink, createdAt: .now) {
             print("Card clicked")
         }
     }
