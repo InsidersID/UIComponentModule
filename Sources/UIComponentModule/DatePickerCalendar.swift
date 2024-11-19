@@ -95,24 +95,43 @@ public struct DatePickerCalendar: View {
     private func handleDateSelection(selectedDate: Date?) {
         guard let date = selectedDate else { return }
         
-        if excludedDateRanges.contains(where: { $0.start <= date && date <= $0.end }) {
-            print("Selected date falls in excluded range.")
-            return
-        }
-        
         if isStartDateSelected {
+            // Check if the selected start date is valid
+            if excludedDateRanges.contains(where: { $0.start <= date && date <= $0.end }) {
+                print("Start date falls in an excluded range.")
+                return
+            }
+            
             startDate = date
+            endDate = nil // Reset the end date for new range
             isStartDateSelected.toggle()
-            endDate = nil
         } else {
-            if let start = startDate, date >= start {
+            // Check if the selected end date is valid
+            if let start = startDate {
+                if date < start {
+                    print("End date cannot be before the start date.")
+                    return
+                }
+                
+                // Check the range from startDate to selected endDate
+                let newRange = (start: start, end: date)
+                if isRangeExcluded(newRange) {
+                    print("Selected date range overlaps with an excluded range.")
+                    return
+                }
+                
                 endDate = date
                 isStartDateSelected.toggle()
             } else {
-                startDate = date
-                endDate = nil
-                isStartDateSelected = false
+                print("Please select a start date first.")
             }
+        }
+    }
+    
+    private func isRangeExcluded(_ range: (start: Date, end: Date)) -> Bool {
+        excludedDateRanges.contains { excludedRange in
+            // Check if the ranges overlap
+            !(range.end < excludedRange.start || range.start > excludedRange.end)
         }
     }
     
@@ -189,6 +208,7 @@ public struct DatePickerCalendar: View {
         }
         return false
     }
+    
 }
 
 struct DayInfo: Hashable {
