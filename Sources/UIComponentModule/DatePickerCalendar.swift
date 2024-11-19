@@ -3,17 +3,21 @@ import SwiftUI
 public struct DatePickerCalendar: View {
     @Binding public var startDate: Date?
     @Binding public var endDate: Date?
-    
+    public var excludedDateRanges: [(start: Date, end: Date)]
+
     private let calendar = Calendar.current
     @State private var currentMonth: Date = Date()
     private let today: Date = Date()
     @State private var isStartDateSelected: Bool = true
-    
-    public init(startDate: Binding<Date?> = .constant(nil), endDate: Binding<Date?> = .constant(nil)) {
+
+    public init(startDate: Binding<Date?> = .constant(nil),
+                endDate: Binding<Date?> = .constant(nil),
+                excludedDateRanges: [(start: Date, end: Date)] = []) {
         self._startDate = startDate
         self._endDate = endDate
+        self.excludedDateRanges = excludedDateRanges
     }
-    
+
     public var body: some View {
         VStack {
             HStack {
@@ -64,12 +68,21 @@ public struct DatePickerCalendar: View {
                         .frame(width: 40, height: 40)
                         .background(
                             Circle()
-                                .fill(dateInfo.isStart || dateInfo.isEnd ? Color.blue : (dateInfo.isInRange ? Color.blue.opacity(0.3) : Color.clear))
+                                .fill(
+                                    dateInfo.isExcluded ? Color.gray.opacity(0.5) :
+                                    (dateInfo.isStart || dateInfo.isEnd ? Color.blue :
+                                    (dateInfo.isInRange ? Color.blue.opacity(0.3) : Color.clear))
+                                )
                         )
-                        .foregroundColor(dateInfo.isToday ? Color.blue : (dateInfo.isPast ? Color.gray : (dateInfo.isCurrentMonth ? Color.primary : Color.gray.opacity(0.2))))
+                        .foregroundColor(dateInfo.isExcluded ? Color.red :
+                                         (dateInfo.isToday ? Color.blue :
+                                         (dateInfo.isPast ? Color.gray :
+                                         (dateInfo.isCurrentMonth ? Color.primary : Color.gray.opacity(0.2)))))
                         .cornerRadius(8)
                         .onTapGesture {
-                            if (dateInfo.isToday || !dateInfo.isPast) && dateInfo.isCurrentMonth {
+                            if !dateInfo.isExcluded &&
+                                (dateInfo.isToday || !dateInfo.isPast) &&
+                                dateInfo.isCurrentMonth {
                                 handleDateSelection(selectedDate: dateInfo.date)
                             }
                         }
@@ -114,7 +127,7 @@ public struct DatePickerCalendar: View {
                 let firstWeekdayIndex = (firstWeekday + 5) % 7
                 
                 for _ in 0..<firstWeekdayIndex {
-                    days.append(DayInfo(day: -1, isCurrentMonth: false, isToday: false, isPast: true, date: nil, isInRange: false, isStart: false, isEnd: false))
+                    days.append(DayInfo(day: -1, isCurrentMonth: false, isToday: false, isPast: true, date: nil, isInRange: false, isStart: false, isEnd: false, isExcluded: false))
                 }
                 
                 for day in 1...numberOfDays {
@@ -124,18 +137,25 @@ public struct DatePickerCalendar: View {
                         let isInRange = isDateInRange(date: date)
                         let isStart = isStartDate(date)
                         let isEnd = isEndDate(date)
+                        let isExcluded = isDateExcluded(date)
                         
-                        days.append(DayInfo(day: day, isCurrentMonth: true, isToday: isToday, isPast: isPast, date: date, isInRange: isInRange, isStart: isStart, isEnd: isEnd))
+                        days.append(DayInfo(day: day, isCurrentMonth: true, isToday: isToday, isPast: isPast, date: date, isInRange: isInRange, isStart: isStart, isEnd: isEnd, isExcluded: isExcluded))
                     }
                 }
                 
                 while days.count < 35 {
-                    days.append(DayInfo(day: -1, isCurrentMonth: false, isToday: false, isPast: true, date: nil, isInRange: false, isStart: false, isEnd: false))
+                    days.append(DayInfo(day: -1, isCurrentMonth: false, isToday: false, isPast: true, date: nil, isInRange: false, isStart: false, isEnd: false, isExcluded: false))
                 }
             }
         }
         
         return days
+    }
+    
+    private func isDateExcluded(_ date: Date) -> Bool {
+        excludedDateRanges.contains { range in
+            date >= range.start && date <= range.end
+        }
     }
     
     private func monthAndYearString(for date: Date) -> String {
@@ -175,8 +195,15 @@ struct DayInfo: Hashable {
     let isInRange: Bool
     let isStart: Bool
     let isEnd: Bool
+    let isExcluded: Bool
 }
 
 #Preview {
-    DatePickerCalendar(startDate: .constant(.now), endDate: .constant(.now.addingTimeInterval(60 * 60 * 24 * 7)))
+    DatePickerCalendar(
+        startDate: .constant(nil),
+        endDate: .constant(nil),
+        excludedDateRanges: [
+            (start: Date(), end: Date().addingTimeInterval(60 * 60 * 24 * 7))
+        ]
+    )
 }
