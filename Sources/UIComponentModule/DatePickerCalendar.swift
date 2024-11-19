@@ -4,12 +4,12 @@ public struct DatePickerCalendar: View {
     @Binding public var startDate: Date?
     @Binding public var endDate: Date?
     public var excludedDateRanges: [(start: Date, end: Date)]
-
+    
     private let calendar = Calendar.current
     @State private var currentMonth: Date = Date()
     private let today: Date = Date()
     @State private var isStartDateSelected: Bool = true
-
+    
     public init(startDate: Binding<Date?> = .constant(nil),
                 endDate: Binding<Date?> = .constant(nil),
                 excludedDateRanges: [(start: Date, end: Date)] = []) {
@@ -17,7 +17,7 @@ public struct DatePickerCalendar: View {
         self._endDate = endDate
         self.excludedDateRanges = excludedDateRanges
     }
-
+    
     public var body: some View {
         VStack {
             HStack {
@@ -70,14 +70,14 @@ public struct DatePickerCalendar: View {
                             Circle()
                                 .fill(
                                     dateInfo.isExcluded ? Color.gray.opacity(0.5) :
-                                    (dateInfo.isStart || dateInfo.isEnd ? Color.blue :
-                                    (dateInfo.isInRange ? Color.blue.opacity(0.3) : Color.clear))
+                                        (dateInfo.isStart || dateInfo.isEnd ? Color.blue :
+                                            (dateInfo.isInRange ? Color.blue.opacity(0.3) : Color.clear))
                                 )
                         )
                         .foregroundColor(dateInfo.isExcluded ? Color.red :
-                                         (dateInfo.isToday ? Color.blue :
-                                         (dateInfo.isPast ? Color.gray :
-                                         (dateInfo.isCurrentMonth ? Color.primary : Color.gray.opacity(0.2)))))
+                                            (dateInfo.isToday ? Color.blue :
+                                                (dateInfo.isPast ? Color.gray :
+                                                    (dateInfo.isCurrentMonth ? Color.primary : Color.gray.opacity(0.2)))))
                         .cornerRadius(8)
                         .onTapGesture {
                             if !dateInfo.isExcluded &&
@@ -94,6 +94,11 @@ public struct DatePickerCalendar: View {
     
     private func handleDateSelection(selectedDate: Date?) {
         guard let date = selectedDate else { return }
+        
+        if excludedDateRanges.contains(where: { $0.start <= date && date <= $0.end }) {
+            print("Selected date falls in excluded range.")
+            return
+        }
         
         if isStartDateSelected {
             startDate = date
