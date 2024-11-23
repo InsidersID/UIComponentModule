@@ -44,6 +44,7 @@ public struct VisaApplicationCard: View {
                             .foregroundStyle(Color("blackOpacity4"))
                             .lineLimit(nil)
                             .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
                         HStack {
                             Text("\(!isCompleted ? "\(Int(visaProgressPercentage))%" : "Selesai")")
                                 .font(.system(size: 14))
