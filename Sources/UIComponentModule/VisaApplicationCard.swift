@@ -53,6 +53,8 @@ public struct VisaApplicationCard: View {
                                 .foregroundStyle(Color("blackOpacity3"))
                         }
                     }
+                    
+                    Spacer()
                 }
                 if visaProgressPercentage <  100 {
                     VStack {
