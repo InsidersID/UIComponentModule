@@ -4,7 +4,15 @@ public struct NotificationCard: View {
     @Environment(\.colorScheme) var colorScheme
     @State public var deleteNotification: Bool = false
     
-    public init() {}
+    let icon: String
+    let title: String
+    let subtitle: String
+    
+    public init(icon: String, title: String, subtitle: String) {
+        self.icon = icon
+        self.title = title
+        self.subtitle = subtitle
+    }
     
     public var body: some View {
         GeometryReader { proxy in
@@ -15,13 +23,13 @@ public struct NotificationCard: View {
                         .shadow(color: .black.opacity(0.1), radius: 10)
                     
                     HStack {
-                        Image(systemName: "checkmark.circle")
+                        Image(systemName: icon)
                             .foregroundStyle(.green)
                         
                         VStack(alignment: .leading) {
-                            Text("Entry berhasil dibuat!")
+                            Text(title)
                                 .foregroundStyle(colorScheme == .dark ? Color.black : .black)
-                            Text("Pengajuan bisa dilihat di tab Visaku")
+                            Text(subtitle)
                                 .foregroundStyle(colorScheme == .dark ? Color.black : .secondary)
                                 .font(.subheadline)
                         }
