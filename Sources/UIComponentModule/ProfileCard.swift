@@ -36,8 +36,10 @@ public struct ProfileCard: View {
                             if let image = UIImage(data: imageData) {
                                 Image(uiImage: image)
                                     .resizable()
+                                    .aspectRatio(contentMode: .fill)
                                     .frame(width: photoSize, height: photoSize)
                                     .cornerRadius(24)
+                                    .clipped()
                             } else {
                                 Image("")
                                     .resizable()
