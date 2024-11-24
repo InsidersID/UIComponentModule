@@ -7,11 +7,13 @@ public struct NotificationCard: View {
     let icon: String
     let title: String
     let subtitle: String
+    let iconColor: Color
     
-    public init(icon: String, title: String, subtitle: String) {
+    public init(icon: String, title: String, subtitle: String, iconColor: Color = Color.primary) {
         self.icon = icon
         self.title = title
         self.subtitle = subtitle
+        self.iconColor = iconColor
     }
     
     public var body: some View {
@@ -24,7 +26,7 @@ public struct NotificationCard: View {
                     
                     HStack {
                         Image(systemName: icon)
-                            .foregroundStyle(.green)
+                            .foregroundStyle(iconColor)
                         
                         VStack(alignment: .leading) {
                             Text(title)
