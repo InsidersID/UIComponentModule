@@ -52,5 +52,5 @@ public struct NotificationCard: View {
 }
 
 #Preview {
-    NotificationCard()
+    NotificationCard(icon: "checkmark.circle", title: "Entry berhasil dibuat!", subtitle: "Pengajuan bisa dilihat di tab Visaku.")
 }
